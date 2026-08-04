@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Products | Alliance Hardware, Inc.</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="products-header">
+<h1>Featured Products</h1>
+<p>Discover our featured products trusted by contractors, engineers, businesses, and homeowners throughout Cebu.</p>
+</header>
+
+<section class="product-page">
+
+<aside class="sidebar">
+<div class="sidebar-header">
+<h3>📦 Product Categories</h3>
+<p>Browse our complete range of hardware, construction, electrical, plumbing, and industrial products.</p>
+</div>
+
+<div class="product-search">
+<input type="text" id="productSearch" placeholder="🔍 Search products or brands...">
+</div>
+
+<ul>
+<li><a href="#construction"><span>🏗 Construction Materials</span><span class="arrow">→</span></a></li>
+<li><a href="#paint"><span>🎨 Paint Center</span><span class="arrow">→</span></a></li>
+<li><a href="#powertools"><span>🛠 Power Tools</span><span class="arrow">→</span></a></li>
+</ul>
+
+<div class="sidebar-cta">
+<h4>Need Assistance?</h4>
+<p>Can't find the product you're looking for?</p>
+<a href="contact.html" class="btn-primary">Request a Quote</a>
+</div>
+</aside>
+
+<div class="products-content">
+
+<h2 class="category-heading" id="construction">🏗 Construction Materials</h2>
+<div class="product-grid">
+
+<div class="product-card">
+<img src="../images/portland cement.jpg" alt="APO Cement">
+<div class="product-content">
+<span class="product-category">Construction Materials</span>
+<h3>APO Portland Cement</h3>
+<p>Premium Portland cement for residential, commercial, and infrastructure projects.</p>
+<div class="product-meta"><span class="brand">Brand: APO Cement</span><span class="stock">✓ In Stock</span></div>
+<a href="apo-cement.html" class="product-btn">View Product →</a>
+</div>
+</div>
+
+<div class="product-card">
+<img src="../images/bars.jpg" alt="Steel Bars">
+<div class="product-content">
+<span class="product-category">Construction Materials</span>
+<h3>Steel Reinforcing Bars</h3>
+<p>High-strength reinforcing bars for construction projects.</p>
+<div class="product-meta"><span class="brand">Steel Products</span><span class="stock">✓ In Stock</span></div>
+<a href="#" class="product-btn">View Product →</a>
+</div>
+</div>
+
+</div>
+
+<h2 class="category-heading" id="paint">🎨 Paint Center</h2>
+<div class="product-grid">
+<div class="product-card">
+<img src="../images/boysen.jpg" alt="Boysen">
+<div class="product-content">
+<span class="product-category">Paint Center</span>
+<h3>Boysen Paint</h3>
+<p>Premium interior and exterior paints.</p>
+<div class="product-meta"><span class="brand">Boysen</span><span class="stock">✓ In Stock</span></div>
+<a href="boysen.html" class="product-btn">View Product →</a>
+</div>
+</div>
+</div>
+
+<h2 class="category-heading" id="powertools">🛠 Power Tools</h2>
+<div class="product-grid">
+<div class="product-card">
+<img src="../images/bosch.jpg" alt="Bosch">
+<div class="product-content">
+<span class="product-category">Power Tools</span>
+<h3>Bosch Power Tools</h3>
+<p>German-engineered professional tools.</p>
+<div class="product-meta"><span class="brand">Bosch</span><span class="stock">✓ In Stock</span></div>
+<a href="bosch.html" class="product-btn">View Product →</a>
+</div>
+</div>
+</div>
+
+</div>
+</section>
+
+<script>
+const s=document.getElementById('productSearch');
+s.addEventListener('keyup',()=>{
+ const f=s.value.toLowerCase();
+ document.querySelectorAll('.product-card').forEach(c=>{
+ c.style.display=c.innerText.toLowerCase().includes(f)?'flex':'none';
+ });
+});
+</script>
+
+</body>
+</html>
