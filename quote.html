@@ -3,105 +3,245 @@
 
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Request a Quote | Alliance Hardware, Inc.</title>
+    <title>Request a Quote | Alliance Hardware, Inc.</title>
 
-<link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
 </head>
 
 <body>
 
-<header class="products-header">
+    <nav class="navbar">
 
-<h1>Request a Quote</h1>
+    <a href="index.html" class="logo">
 
-<p>
+        <img src="images/logo.jpg" alt="Alliance Hardware Logo">
 
-Tell us about your project and we'll prepare
-the best quotation for your requirements.
+    </a>
 
-</p>
+    <ul class="nav-links">
 
-</header>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="brands.html">Brands</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
 
-<section class="quote-page">
+    </ul>
 
-<div class="container">
+    <a href="quote.html" class="btn btn-primary active-btn">
+        Request Quote
+    </a>
 
-<div class="quote-box">
+</nav>
 
-<h2>Quotation Request Form</h2>
+    <header class="products-header">
 
-<form>
+        <h1>Request a Quote</h1>
 
-<div class="form-grid">
+        <p>
+            Tell us about your project and we'll prepare
+            the best quotation for your requirements.
+        </p>
 
-<input type="text" placeholder="Company Name">
+    </header>
 
-<input type="text" placeholder="Contact Person" required>
+    <section class="quote-page">
 
-<input type="email" placeholder="Email Address" required>
+        <div class="container">
 
-<input type="text" placeholder="Mobile Number" required>
+            <div class="quote-box">
 
-<input type="text" placeholder="Project Name">
+                <h2>Quotation Request Form</h2>
 
-<select>
+                <form id="quoteForm">
 
-<option selected disabled>
+                    <div class="form-grid">
 
-Select Product Category
+                        <input
+                            type="text"
+                            name="company"
+                            placeholder="Company Name *"
+                            required>
 
-</option>
+                        <input
+                            type="text"
+                            name="contact_person"
+                            placeholder="Contact Person *"
+                            required>
 
-<option>Waterworks Materials</option>
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Email Address *"
+                            required>
 
-<option>Safety Equipment</option>
+                        <input
+                            type="tel"
+                            name="mobile"
+                            placeholder="Mobile Number *"
+                            required>
 
-<option>Construction Materials</option>
+                        <input
+                            type="text"
+                            name="project_name"
+                            placeholder="Project Name">
 
-<option>Industrial Hardware</option>
+                        <select
+                            name="category"
+                            required>
 
-<option>Electrical Supplies</option>
+                            <option selected disabled>
+                                Select Product Category
+                            </option>
 
-<option>Plumbing Supplies</option>
+                            <option>Construction Materials</option>
+                            <option>Electrical Supplies</option>
+                            <option>Industrial Hardware</option>
+                            <option>Paint Center</option>
+                            <option>Plumbing Supplies</option>
+                            <option>Power Tools</option>
+                            <option>Safety Equipment</option>
+                            <option>Waterworks Materials</option>
 
-</select>
+                        </select>
 
-<input type="text" placeholder="Estimated Quantity">
+                        <input
+                            type="number"
+                            name="quantity"
+                            placeholder="Estimated Quantity">
 
-<input type="text" placeholder="Project Location">
+                        <input
+                            type="text"
+                            name="location"
+                            placeholder="Project Location">
 
-<input type="date">
+                        <input
+                            type="date"
+                            name="delivery_date">
 
-</div>
+                        <label>
+                            Attach BOQ / Drawing (Optional)
+                        </label>
 
-<textarea
-placeholder="Please describe the products you need, preferred brands, specifications, or any additional requirements."
-></textarea>
+                        <input
+                            type="file"
+                            name="attachment"
+                            accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png">
 
-<button type="submit">
+                    </div>
 
-Request Quotation
+                    <textarea
+                        name="message"
+                        rows="6"
+                        required
+                        placeholder="Please describe the products you need, preferred brands, specifications, or any additional requirements."></textarea>
 
-</button>
+                    <button
+                        type="submit"
+                        class="btn btn-primary">
 
-</form>
+                        <i class="fa-solid fa-paper-plane"></i>
 
-</div>
+                        Submit Quotation Request
 
-</div>
+                    </button>
 
-</section>
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+    
 
 </body>
 
+<!-- =====================================
+     SUCCESS POPUP
+====================================== -->
+
+<div id="successPopup" class="success-popup">
+
+    <div class="success-box">
+
+        <div class="success-icon">
+
+            <i class="fa-solid fa-circle-check"></i>
+
+        </div>
+
+        <h2>Quotation Request Sent!</h2>
+
+        <p>
+
+            Thank you for choosing
+            <strong>Alliance Hardware, Inc.</strong>
+
+            <br><br>
+
+            We have successfully received your quotation request.
+
+            <br><br>
+
+            Our Sales Team will review your request and contact you
+            as soon as possible.
+
+        </p>
+
+        <button
+            type="button"
+            id="closePopup"
+            class="btn btn-primary">
+
+            Continue Browsing
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- =====================================
+     JAVASCRIPT
+====================================== -->
+
+<script>
+
+const form = document.getElementById("quoteForm");
+const popup = document.getElementById("successPopup");
+const closeBtn = document.getElementById("closePopup");
+
+form.addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    popup.classList.add("show");
+
+    form.reset();
+
+});
+
+closeBtn.addEventListener("click", function(){
+
+    popup.classList.remove("show");
+
+});
+
+</script>
+
+</body>
 </html>
