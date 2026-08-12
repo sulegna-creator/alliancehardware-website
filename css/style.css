@@ -1969,6 +1969,7 @@ section{
     border-left:6px solid #FFC107;
     padding-left:18px;
     font-weight:700;
+    scroll-margin-top: 110px;
 }
 
 .category-heading:first-child{
@@ -3459,4 +3460,97 @@ section{
     background:#F4B400 !important;
     color:#07122B !important;
 
+}
+
+/* =====================================
+   ELECTRICAL SUPPLIES HERO
+===================================== */
+
+.electrical-hero{
+    min-height:520px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    position:relative;
+
+    background:
+        linear-gradient(
+            rgba(7,18,43,.72),
+            rgba(7,18,43,.72)
+        ),
+        url("../images/hero3.jpg")
+        center center / cover no-repeat;
+
+    color:#fff;
+
+    text-align:center;
+
+    padding:120px 8% 80px;
+}
+
+.electrical-hero .overlay{
+    position:absolute;
+    inset:0;
+
+    background:rgba(7,18,43,.20);
+
+    z-index:1;
+}
+
+.electrical-hero .page-hero-content{
+    position:relative;
+
+    z-index:2;
+
+    max-width:850px;
+
+    margin:0 auto;
+}
+
+.electrical-hero .page-badge{
+    display:inline-block;
+
+    margin-bottom:20px;
+
+    padding:8px 18px;
+
+    border-radius:30px;
+
+    background:#fdbd00;
+
+    color:#07122B;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+}
+
+.electrical-hero h1{
+    margin:0 0 20px;
+
+    color:#fff;
+
+    font-size:52px;
+
+    line-height:1.15;
+
+    font-weight:700;
+}
+
+.electrical-hero p{
+    max-width:750px;
+
+    margin:0 auto;
+
+    color:#fff;
+
+    font-size:18px;
+
+    line-height:1.8;
 }
