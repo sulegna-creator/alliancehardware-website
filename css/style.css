@@ -3554,3 +3554,53 @@ section{
 
     line-height:1.8;
 }
+
+/* =====================================
+   PLUMBING SUBCATEGORIES
+===================================== */
+
+.plumbing-subcategory{
+    margin-top:70px;
+    margin-bottom:30px;
+}
+
+.plumbing-subcategory h3{
+    font-size:28px;
+    font-weight:600;
+    color:#07122B;
+    margin:0;
+}
+
+/* =====================================
+   MORE TRUSTED BRANDS
+===================================== */
+
+.more-brands{
+    text-align:center;
+    margin:55px auto 20px;
+    max-width:700px;
+}
+
+.more-brands h3{
+    font-size:26px;
+    color:#07122B;
+    margin-bottom:12px;
+}
+
+.more-brands p{
+    font-size:15px;
+    color:#666;
+    line-height:1.7;
+    margin-bottom:22px;
+}
+
+.more-brands .btn{
+    display:inline-block;
+}
+/* =====================================
+   PLUMBING FLANGE TYPE GRID
+===================================== */
+
+.flange-grid{
+    grid-template-columns:repeat(3, 1fr);
+}
