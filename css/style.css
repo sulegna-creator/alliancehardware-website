@@ -3575,32 +3575,58 @@ section{
    MORE TRUSTED BRANDS
 ===================================== */
 
-.more-brands{
-    text-align:center;
-    margin:55px auto 20px;
-    max-width:700px;
+.more-brands {
+    width: 100%;
+    grid-column: 1 / -1;
+    box-sizing: border-box;
+
+    margin-top: 35px;
+    padding: 45px 40px;
+
+    background: #fff;
+    border-radius: 15px;
+
+    text-align: center;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
 }
 
-.more-brands h3{
-    font-size:26px;
-    color:#07122B;
-    margin-bottom:12px;
+.more-brands h3 {
+    margin: 0 0 15px;
+
+    font-size: 24px;
+    font-weight: 700;
+
+    color: #07122B;
 }
 
-.more-brands p{
-    font-size:15px;
-    color:#666;
-    line-height:1.7;
-    margin-bottom:22px;
+.more-brands p {
+    max-width: 750px;
+    margin: 0 auto 25px;
+
+    font-size: 15px;
+    line-height: 1.7;
+
+    color: #555;
 }
 
-.more-brands .btn{
-    display:inline-block;
+.more-brands .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 14px 30px;
+
+    border-radius: 30px;
+
+    font-weight: 600;
+    text-decoration: none;
 }
+
 /* =====================================
-   PLUMBING FLANGE TYPE GRID
+   FLANGE TYPE - 3 COLUMNS
 ===================================== */
 
-.flange-grid{
-    grid-template-columns:repeat(3, 1fr);
+.flange-grid {
+    grid-template-columns: repeat(3, 1fr);
 }
