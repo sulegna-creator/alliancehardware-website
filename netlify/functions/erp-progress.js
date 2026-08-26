@@ -29,7 +29,6 @@ exports.handler = async function (event) {
    */
 
   if (event.httpMethod !== "GET") {
-
     return {
       statusCode: 405,
 
@@ -41,7 +40,6 @@ exports.handler = async function (event) {
         message: "Method not allowed."
       })
     };
-
   }
 
 
@@ -85,7 +83,6 @@ exports.handler = async function (event) {
           "DAWN progress service is not configured."
       })
     };
-
   }
 
 
@@ -97,20 +94,19 @@ exports.handler = async function (event) {
 
   try {
 
-    const response =
-      await fetch(
-        `${dawnApiUrl}/api/erp/progress`,
-        {
-          method: "GET",
+    const response = await fetch(
+      `${dawnApiUrl}/api/erp/progress`,
+      {
+        method: "GET",
 
-          headers: {
-            "Accept": "application/json",
+        headers: {
+          "Accept": "application/json",
 
-            "x-dawn-progress-token":
-              dawnProgressToken
-          }
+          "x-dawn-progress-token":
+            dawnProgressToken
         }
-      );
+      }
+    );
 
 
     /*
@@ -148,7 +144,6 @@ exports.handler = async function (event) {
             "Unable to retrieve DAWN ERP progress."
         })
       };
-
     }
 
 
@@ -159,7 +154,6 @@ exports.handler = async function (event) {
      */
 
     return {
-
       statusCode: 200,
 
       headers: {
@@ -168,7 +162,6 @@ exports.handler = async function (event) {
       },
 
       body: JSON.stringify(data)
-
     };
 
   } catch (error) {
@@ -179,7 +172,6 @@ exports.handler = async function (event) {
     );
 
     return {
-
       statusCode: 502,
 
       headers: {
@@ -190,9 +182,6 @@ exports.handler = async function (event) {
         message:
           "DAWN ERP is currently unavailable."
       })
-
     };
-
   }
-
 };
