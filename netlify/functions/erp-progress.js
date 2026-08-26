@@ -2,23 +2,12 @@
  * =========================================================
  * ALLIANCE HARDWARE WEBSITE
  * DAWN ERP PROGRESS NETLIFY FUNCTION
- * =========================================================
  *
- * This function runs on Netlify's server.
- *
- * IMPORTANT:
- * - DAWN_PROGRESS_TOKEN is NEVER sent to the browser.
- * - DAWN_API_URL is stored as a Netlify environment variable.
- * - The browser only receives the ERP progress information.
- *
- * Browser:
- *   /.netlify/functions/erp-progress
- *
- * Netlify Function:
- *   -> DAWN /api/erp/progress
- *
+ * TEMPORARY TOKEN DIAGNOSTICS
  * =========================================================
  */
+
+const crypto = require("crypto");
 
 exports.handler = async function (event) {
 
@@ -56,6 +45,39 @@ exports.handler = async function (event) {
 
   const dawnProgressToken =
     process.env.DAWN_PROGRESS_TOKEN;
+
+
+  /*
+   * =======================================================
+   * SAFE TOKEN FINGERPRINT
+   * =======================================================
+   *
+   * IMPORTANT:
+   * The actual token is NEVER logged.
+   *
+   * Only the first 12 characters of its SHA-256 hash
+   * are logged.
+   *
+   */
+
+  const tokenFingerprint =
+    dawnProgressToken
+      ? crypto
+          .createHash("sha256")
+          .update(dawnProgressToken)
+          .digest("hex")
+          .slice(0, 12)
+      : "MISSING";
+
+  console.log(
+    "DAWN token fingerprint:",
+    tokenFingerprint
+  );
+
+  console.log(
+    "DAWN API URL:",
+    dawnApiUrl || "MISSING"
+  );
 
 
   /*
@@ -164,13 +186,7 @@ exports.handler = async function (event) {
 
       headers: {
         "Content-Type": "application/json",
-
-        /*
-         * Allow the Alliance website page to consume
-         * this function.
-         */
-        "Cache-Control":
-          "no-store"
+        "Cache-Control": "no-store"
       },
 
       body: JSON.stringify(data)
