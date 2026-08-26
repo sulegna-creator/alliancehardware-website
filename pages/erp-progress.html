@@ -1,574 +1,1697 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
 
-  <title>DAWN ERP | Progress</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>
+    DAWN ERP Development Progress | Alliance Hardware, Inc.
+  </title>
+
+  <meta
+    name="description"
+    content="Read-only development progress portal for DAWN ERP by Alliance Hardware, Inc."
+  />
 
   <style>
     :root {
       --navy: #081632;
-      --navy-light: #10244d;
-      --blue: #1f5eff;
-      --green: #16a34a;
-      --orange: #f59e0b;
-      --gray: #64748b;
-      --light: #f4f7fb;
-      --white: #ffffff;
-      --border: #e2e8f0;
+      --navy-2: #0d2147;
+      --blue: #1f6feb;
+      --blue-dark: #1557b0;
+      --blue-soft: #eaf2ff;
+
+      --green: #198754;
+      --green-soft: #eaf7ef;
+
+      --orange: #c77700;
+      --orange-soft: #fff4df;
+
+      --gray: #697386;
+      --gray-soft: #f1f3f6;
+
       --text: #172033;
+      --muted: #687386;
+
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --border: #e3e8ef;
+
+      --shadow:
+        0 18px 45px rgba(8, 22, 50, 0.08);
+
+      --shadow-soft:
+        0 8px 24px rgba(8, 22, 50, 0.05);
+
+      --radius: 20px;
     }
 
     * {
       box-sizing: border-box;
     }
 
-    body {
-      margin: 0;
-      font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-      background: var(--light);
-      color: var(--text);
+    html {
+      scroll-behavior: smooth;
     }
 
+    body {
+      margin: 0;
+
+      font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+
+      color: var(--text);
+      background:
+        linear-gradient(
+          180deg,
+          #eef4fc 0,
+          #f4f7fb 300px,
+          #f4f7fb 100%
+        );
+
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    /* =====================================================
+       TOP NAV
+       ===================================================== */
+
     .topbar {
-      background: var(--navy);
-      color: white;
-      padding: 22px 6%;
+      position: relative;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--navy),
+          var(--navy-2)
+        );
+
+      color: #ffffff;
+
+      border-bottom:
+        1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .topbar-inner {
+      width: min(
+        1180px,
+        calc(100% - 32px)
+      );
+
+      min-height: 76px;
+
+      margin: 0 auto;
+
       display: flex;
-      justify-content: space-between;
+
       align-items: center;
+
+      justify-content: space-between;
+
       gap: 20px;
     }
 
     .brand {
-      font-size: 22px;
-      font-weight: 800;
-      letter-spacing: 0.5px;
+      display: flex;
+
+      align-items: center;
+
+      gap: 14px;
     }
 
-    .brand span {
-      display: block;
-      margin-top: 4px;
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+
+      display: grid;
+
+      place-items: center;
+
+      border-radius: 13px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,0.16),
+          rgba(255,255,255,0.06)
+        );
+
+      border:
+        1px solid rgba(255,255,255,0.15);
+
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+    }
+
+    .brand-info {
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 3px;
+    }
+
+    .brand-name {
+      font-size: 14px;
+
+      font-weight: 850;
+
+      letter-spacing: 0.02em;
+    }
+
+    .brand-subtitle {
+      color:
+        rgba(255,255,255,0.68);
+
+      font-size: 11px;
+
+      line-height: 1.4;
+    }
+
+    .back-link {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      padding: 10px 14px;
+
+      border-radius: 11px;
+
+      color: #ffffff;
+
+      border:
+        1px solid rgba(255,255,255,0.16);
+
+      background:
+        rgba(255,255,255,0.05);
+
       font-size: 12px;
-      font-weight: 400;
-      opacity: 0.7;
+
+      font-weight: 750;
+
+      transition:
+        background 0.2s ease,
+        transform 0.2s ease;
     }
 
-    .private-label {
-      font-size: 12px;
-      padding: 7px 12px;
-      border: 1px solid rgba(255,255,255,0.25);
-      border-radius: 20px;
-      opacity: 0.9;
+    .back-link:hover {
+      background:
+        rgba(255,255,255,0.10);
+
+      transform:
+        translateY(-1px);
     }
 
-    .container {
-      width: min(1180px, 92%);
-      margin: 40px auto 70px;
+    /* =====================================================
+       PAGE
+       ===================================================== */
+
+    .page {
+      width: min(
+        1180px,
+        calc(100% - 32px)
+      );
+
+      margin: 0 auto;
+
+      padding:
+        52px 0 70px;
     }
+
+    /* =====================================================
+       HERO
+       ===================================================== */
 
     .hero {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 35px;
-      box-shadow: 0 10px 35px rgba(8, 22, 50, 0.06);
-      margin-bottom: 25px;
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1fr)
+        auto;
+
+      align-items: end;
+
+      gap: 32px;
+
+      margin-bottom: 30px;
     }
 
-    .hero h1 {
-      margin: 0 0 8px;
-      font-size: 32px;
-    }
+    .eyebrow {
+      display: inline-flex;
 
-    .hero p {
-      margin: 0;
-      color: var(--gray);
-      line-height: 1.6;
-    }
-
-    .overall {
-      margin-top: 28px;
-    }
-
-    .overall-header {
-      display: flex;
-      justify-content: space-between;
       align-items: center;
-      margin-bottom: 10px;
+
+      gap: 8px;
+
+      width: fit-content;
+
+      padding:
+        7px 11px;
+
+      border-radius: 999px;
+
+      background:
+        var(--blue-soft);
+
+      color:
+        var(--blue);
+
+      font-size: 11px;
+
+      font-weight: 850;
+
+      letter-spacing: 0.08em;
+
+      text-transform: uppercase;
     }
 
-    .overall-title {
-      font-weight: 700;
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+
+      background:
+        var(--blue);
+
+      box-shadow:
+        0 0 0 4px
+        rgba(31,111,235,0.10);
     }
 
-    .overall-value {
-      font-size: 28px;
+    h1 {
+      margin:
+        15px 0 10px;
+
+      color:
+        var(--navy);
+
+      font-size:
+        clamp(34px, 5vw, 52px);
+
+      line-height: 1.02;
+
+      letter-spacing:
+        -0.045em;
+    }
+
+    .hero-description {
+      max-width:
+        790px;
+
+      margin: 0;
+
+      color:
+        var(--muted);
+
+      font-size: 15px;
+
+      line-height: 1.75;
+    }
+
+    .secure-pill {
+      align-self: start;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      padding:
+        9px 12px;
+
+      border-radius: 999px;
+
+      background:
+        rgba(25,135,84,0.08);
+
+      color:
+        var(--green);
+
+      border:
+        1px solid
+        rgba(25,135,84,0.14);
+
+      font-size: 11px;
+
       font-weight: 800;
-      color: var(--blue);
+
+      white-space: nowrap;
+    }
+
+    .secure-dot {
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+
+      background:
+        var(--green);
+    }
+
+    /* =====================================================
+       OVERALL CARD
+       ===================================================== */
+
+    .overview {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1fr)
+        205px;
+
+      gap: 28px;
+
+      align-items: center;
+
+      padding: 30px;
+
+      background:
+        var(--card);
+
+      border:
+        1px solid var(--border);
+
+      border-radius:
+        var(--radius);
+
+      box-shadow:
+        var(--shadow);
+
+      margin-bottom: 30px;
+    }
+
+    .overview-copy {
+      min-width: 0;
+    }
+
+    .section-label {
+      margin: 0 0 7px;
+
+      color:
+        var(--blue);
+
+      font-size: 11px;
+
+      font-weight: 900;
+
+      letter-spacing: 0.08em;
+
+      text-transform: uppercase;
+    }
+
+    .overview-title {
+      margin: 0;
+
+      color:
+        var(--navy);
+
+      font-size: 23px;
+
+      font-weight: 850;
+    }
+
+    .overview-status {
+      margin: 7px 0 21px;
+
+      color:
+        var(--muted);
+
+      font-size: 13px;
+    }
+
+    .progress-line-header {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 15px;
+
+      margin-bottom: 9px;
+    }
+
+    .progress-line-title {
+      color:
+        var(--text);
+
+      font-size: 12px;
+
+      font-weight: 800;
+    }
+
+    .progress-line-value {
+      color:
+        var(--navy);
+
+      font-size: 12px;
+
+      font-weight: 900;
     }
 
     .progress-track {
       width: 100%;
-      height: 14px;
-      background: #e8edf5;
-      border-radius: 20px;
+
+      height: 13px;
+
       overflow: hidden;
+
+      border-radius: 999px;
+
+      background:
+        #e8edf4;
     }
 
-    .progress-bar {
+    .progress-fill {
       height: 100%;
+
       width: 0;
-      background: var(--blue);
-      border-radius: 20px;
-      transition: width 0.8s ease;
+
+      border-radius:
+        inherit;
+
+      background:
+        linear-gradient(
+          90deg,
+          var(--blue),
+          #4a8df2
+        );
+
+      transition:
+        width 0.8s ease;
+    }
+
+    .overview-meta {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 8px;
+
+      margin-top: 14px;
+    }
+
+    .meta-chip {
+      padding:
+        6px 9px;
+
+      border-radius: 8px;
+
+      color:
+        var(--muted);
+
+      background:
+        #f6f8fb;
+
+      border:
+        1px solid
+        var(--border);
+
+      font-size: 10px;
+
+      font-weight: 750;
+    }
+
+    /* =====================================================
+       CIRCLE
+       ===================================================== */
+
+    .circle-wrap {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+    }
+
+    .progress-circle {
+      width: 166px;
+      height: 166px;
+
+      position: relative;
+
+      display: grid;
+
+      place-items: center;
+
+      border-radius: 50%;
+
+      background:
+        conic-gradient(
+          var(--blue) 0deg,
+          var(--blue) 0deg,
+          #e8edf4 0deg,
+          #e8edf4 360deg
+        );
+    }
+
+    .progress-circle::after {
+      content: "";
+
+      position: absolute;
+
+      inset: 13px;
+
+      border-radius: 50%;
+
+      background:
+        #ffffff;
+    }
+
+    .circle-content {
+      position: relative;
+
+      z-index: 1;
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      gap: 2px;
+    }
+
+    .circle-value {
+      color:
+        var(--navy);
+
+      font-size: 38px;
+
+      font-weight: 950;
+
+      line-height: 1;
+
+      letter-spacing:
+        -0.05em;
+    }
+
+    .circle-label {
+      color:
+        var(--muted);
+
+      font-size: 10px;
+
+      font-weight: 800;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.07em;
+    }
+
+    /* =====================================================
+       MODULE SECTION
+       ===================================================== */
+
+    .section-head {
+      display: flex;
+
+      align-items: end;
+
+      justify-content: space-between;
+
+      gap: 18px;
+
+      margin:
+        34px 0 16px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+
+      color:
+        var(--navy);
+
+      font-size: 23px;
+
+      letter-spacing:
+        -0.02em;
+    }
+
+    .section-note {
+      color:
+        var(--muted);
+
+      font-size: 11px;
     }
 
     .modules {
       display: grid;
+
       grid-template-columns:
-        repeat(auto-fit, minmax(310px, 1fr));
-      gap: 18px;
+        repeat(2, minmax(0, 1fr));
+
+      gap: 16px;
     }
 
+    /* =====================================================
+       MODULE CARD
+       ===================================================== */
+
     .module {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 15px;
-      padding: 22px;
-      box-shadow: 0 6px 20px rgba(8, 22, 50, 0.04);
+      position: relative;
+
+      padding: 21px;
+
+      border-radius:
+        16px;
+
+      background:
+        var(--card);
+
+      border:
+        1px solid
+        var(--border);
+
+      box-shadow:
+        var(--shadow-soft);
+
+      overflow: hidden;
+
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .module:hover {
+      transform:
+        translateY(-2px);
+
+      box-shadow:
+        0 13px 28px
+        rgba(8,22,50,0.08);
     }
 
     .module-top {
       display: flex;
-      justify-content: space-between;
+
       align-items: flex-start;
-      gap: 15px;
-      margin-bottom: 15px;
+
+      justify-content: space-between;
+
+      gap: 16px;
     }
 
     .module-name {
+      margin: 0;
+
+      color:
+        var(--navy);
+
+      font-size: 15px;
+
+      font-weight: 850;
+    }
+
+    .module-percent {
+      color:
+        var(--navy);
+
       font-size: 16px;
-      font-weight: 800;
-    }
 
-    .status {
+      font-weight: 950;
+
       white-space: nowrap;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 6px 9px;
-      border-radius: 20px;
-      background: #eef2f7;
-      color: var(--gray);
     }
 
-    .status.completed {
-      background: #dcfce7;
-      color: #166534;
-    }
+    .module-status-row {
+      display: flex;
 
-    .status.development {
-      background: #dbeafe;
-      color: #1d4ed8;
-    }
+      align-items: center;
 
-    .status.foundation {
-      background: #fef3c7;
-      color: #92400e;
-    }
+      justify-content: space-between;
 
-    .status.planned {
-      background: #f1f5f9;
-      color: #64748b;
+      gap: 12px;
+
+      margin-top: 16px;
     }
 
     .module-progress {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 7px;
-      font-size: 12px;
-      color: var(--gray);
+      flex: 1;
     }
 
-    .module-track {
+    .module-progress-track {
+      width: 100%;
+
       height: 8px;
-      background: #edf1f6;
-      border-radius: 20px;
+
       overflow: hidden;
+
+      border-radius: 999px;
+
+      background:
+        #edf1f5;
     }
 
-    .module-bar {
+    .module-progress-fill {
       height: 100%;
+
       width: 0;
-      background: var(--blue);
-      border-radius: 20px;
-      transition: width 0.7s ease;
+
+      border-radius:
+        inherit;
+
+      background:
+        linear-gradient(
+          90deg,
+          var(--blue),
+          #4a8df2
+        );
+
+      transition:
+        width 0.7s ease;
     }
 
-    .loading,
-    .error {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 15px;
-      padding: 30px;
-      text-align: center;
-      color: var(--gray);
+    .module-status {
+      flex: 0 0 auto;
+
+      padding:
+        6px 9px;
+
+      border-radius:
+        999px;
+
+      font-size: 10px;
+
+      font-weight: 900;
+
+      white-space: nowrap;
     }
 
-    .error {
-      color: #b91c1c;
-      background: #fef2f2;
-      border-color: #fecaca;
+    .status-completed {
+      color:
+        var(--green);
+
+      background:
+        var(--green-soft);
     }
+
+    .status-development {
+      color:
+        var(--orange);
+
+      background:
+        var(--orange-soft);
+    }
+
+    .status-foundation {
+      color:
+        var(--blue);
+
+      background:
+        var(--blue-soft);
+    }
+
+    .status-planned {
+      color:
+        var(--gray);
+
+      background:
+        var(--gray-soft);
+    }
+
+    /* =====================================================
+       FOOTER
+       ===================================================== */
 
     .footer {
+      margin-top: 42px;
+
+      padding-top: 24px;
+
+      border-top:
+        1px solid
+        var(--border);
+
       text-align: center;
-      color: var(--gray);
-      font-size: 12px;
-      margin-top: 35px;
+
+      color:
+        var(--muted);
+
+      font-size: 11px;
+
+      line-height: 1.8;
     }
 
-    @media (max-width: 650px) {
+    .footer strong {
+      color:
+        var(--text);
+    }
 
-      .topbar {
-        align-items: flex-start;
-        flex-direction: column;
-      }
+    /* =====================================================
+       STATES
+       ===================================================== */
 
+    .state {
+      padding: 40px 20px;
+
+      text-align: center;
+
+      background:
+        var(--card);
+
+      border:
+        1px solid
+        var(--border);
+
+      border-radius:
+        var(--radius);
+
+      box-shadow:
+        var(--shadow);
+    }
+
+    .state h2 {
+      margin:
+        0 0 8px;
+
+      color:
+        var(--navy);
+
+      font-size: 20px;
+    }
+
+    .state p {
+      margin: 0;
+
+      color:
+        var(--muted);
+
+      font-size: 13px;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* =====================================================
+       RESPONSIVE
+       ===================================================== */
+
+    @media (max-width: 880px) {
       .hero {
-        padding: 25px;
+        grid-template-columns: 1fr;
       }
 
-      .hero h1 {
-        font-size: 26px;
+      .secure-pill {
+        justify-self: start;
       }
 
-      .overall-header {
+      .overview {
+        grid-template-columns: 1fr;
+      }
+
+      .circle-wrap {
+        justify-content: flex-start;
+      }
+
+      .modules {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .topbar-inner,
+      .page {
+        width:
+          min(
+            100% - 20px,
+            1180px
+          );
+      }
+
+      .topbar-inner {
+        min-height: 68px;
+      }
+
+      .brand-subtitle {
+        display: none;
+      }
+
+      .back-link {
+        padding:
+          8px 10px;
+      }
+
+      .page {
+        padding:
+          34px 0 55px;
+      }
+
+      .overview {
+        padding: 22px;
+      }
+
+      .module {
+        padding: 18px;
+      }
+
+      .module-status-row {
         align-items: flex-start;
-        flex-direction: column;
-        gap: 5px;
+
+        flex-direction:
+          column;
       }
 
+      .module-progress {
+        width: 100%;
+      }
+
+      .module-status {
+        align-self:
+          flex-start;
+      }
+
+      .progress-circle {
+        width: 148px;
+        height: 148px;
+      }
     }
   </style>
 </head>
 
 <body>
 
+  <!-- =====================================================
+       TOP BAR
+       ===================================================== -->
+
   <header class="topbar">
 
-    <div class="brand">
-      DAWN ERP
-      <span>
-        Digital Assistant for Workflow &amp; Networks
-      </span>
-    </div>
+    <div class="topbar-inner">
 
-    <div class="private-label">
-      Private Progress Portal
+      <a
+        href="../index.html"
+        class="brand"
+      >
+
+        <div class="brand-mark">
+          AH
+        </div>
+
+        <div class="brand-info">
+
+          <div class="brand-name">
+            Alliance Hardware, Inc.
+          </div>
+
+          <div class="brand-subtitle">
+            Construction Materials & Solutions
+          </div>
+
+        </div>
+
+      </a>
+
+      <a
+        href="../index.html"
+        class="back-link"
+      >
+        ← Alliance Website
+      </a>
+
     </div>
 
   </header>
 
 
-  <main class="container">
+  <!-- =====================================================
+       PAGE
+       ===================================================== -->
+
+  <main class="page">
+
+    <!-- ===================================================
+         HERO
+         =================================================== -->
 
     <section class="hero">
 
-      <h1>ERP Development Progress</h1>
+      <div>
 
-      <p>
-        Alliance Hardware's DAWN ERP development roadmap
-        and current implementation status.
-      </p>
-
-      <div class="overall">
-
-        <div class="overall-header">
-
-          <div class="overall-title">
-            Overall Development Progress
-          </div>
-
-          <div
-            class="overall-value"
-            id="overallProgress"
-          >
-            —
-          </div>
-
+        <div class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          Private Progress Portal
         </div>
 
-        <div class="progress-track">
+        <h1>
+          DAWN ERP
+          <br />
+          Development Progress
+        </h1>
 
-          <div
-            class="progress-bar"
-            id="overallBar"
-          ></div>
+        <p class="hero-description">
+          Alliance Hardware's DAWN ERP development roadmap
+          and current implementation status, presented through
+          a secure read-only progress portal.
+        </p>
 
-        </div>
+      </div>
 
+      <div class="secure-pill">
+        <span class="secure-dot"></span>
+        Read-only status view
       </div>
 
     </section>
 
+
+    <!-- ===================================================
+         LOADING
+         =================================================== -->
 
     <section
-      id="modules"
-      class="modules"
+      id="loadingState"
+      class="state"
     >
 
-      <div class="loading">
-        Loading DAWN ERP progress...
-      </div>
+      <h2>
+        Loading DAWN progress...
+      </h2>
+
+      <p>
+        Connecting to the secure progress service.
+      </p>
 
     </section>
 
 
-    <div class="footer">
-      DAWN ERP • Alliance Hardware, Inc.
+    <!-- ===================================================
+         ERROR
+         =================================================== -->
+
+    <section
+      id="errorState"
+      class="state hidden"
+    >
+
+      <h2>
+        Progress temporarily unavailable
+      </h2>
+
+      <p id="errorMessage">
+        Unable to retrieve the latest DAWN ERP progress.
+      </p>
+
+    </section>
+
+
+    <!-- ===================================================
+         CONTENT
+         =================================================== -->
+
+    <div
+      id="content"
+      class="hidden"
+    >
+
+      <!-- ===============================================
+           OVERVIEW
+           =============================================== -->
+
+      <section class="overview">
+
+        <div class="overview-copy">
+
+          <p class="section-label">
+            Overall Development Progress
+          </p>
+
+          <h2
+            id="systemName"
+            class="overview-title"
+          >
+            DAWN ERP
+          </h2>
+
+          <p
+            id="systemStatus"
+            class="overview-status"
+          >
+            In Development
+          </p>
+
+
+          <div class="progress-line-header">
+
+            <span class="progress-line-title">
+              Implementation progress
+            </span>
+
+            <span
+              id="overallLineValue"
+              class="progress-line-value"
+            >
+              0%
+            </span>
+
+          </div>
+
+
+          <div class="progress-track">
+
+            <div
+              id="overallFill"
+              class="progress-fill"
+            ></div>
+
+          </div>
+
+
+          <div class="overview-meta">
+
+            <div class="meta-chip">
+              Digital Assistant for Workflow & Networks
+            </div>
+
+            <div class="meta-chip">
+              Alliance Hardware, Inc.
+            </div>
+
+            <div class="meta-chip">
+              Live development status
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="circle-wrap">
+
+          <div
+            id="progressCircle"
+            class="progress-circle"
+          >
+
+            <div class="circle-content">
+
+              <div
+                id="overallValue"
+                class="circle-value"
+              >
+                0%
+              </div>
+
+              <div class="circle-label">
+                Overall
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ===============================================
+           ROADMAP
+           =============================================== -->
+
+      <div class="section-head">
+
+        <h2>
+          Development Roadmap
+        </h2>
+
+        <div
+          id="lastUpdated"
+          class="section-note"
+        >
+          Updating...
+        </div>
+
+      </div>
+
+
+      <section
+        id="modules"
+        class="modules"
+      ></section>
+
+
+      <!-- ===============================================
+           FOOTER
+           =============================================== -->
+
+      <footer class="footer">
+
+        <strong>
+          DAWN ERP
+        </strong>
+
+        — Digital Assistant for Workflow & Networks
+
+        <br />
+
+        Alliance Hardware, Inc. •
+        Development progress portal
+
+        <br />
+
+        This portal is read-only and does not expose
+        operational ERP functions or business records.
+
+      </footer>
+
     </div>
 
   </main>
 
 
   <script>
-
     /*
      * =====================================================
-     * LOAD DAWN ERP PROGRESS
+     * DAWN PROGRESS SERVICE
      * =====================================================
      *
      * IMPORTANT:
      *
-     * The browser does NOT communicate directly with DAWN.
+     * The browser calls only the Alliance Netlify Function.
      *
-     * It communicates with the Netlify Function:
-     *
-     * /.netlify/functions/erp-progress
-     *
-     * The DAWN service token remains on the Netlify server.
-     *
+     * The DAWN progress token never appears in this file.
      */
 
-    async function loadERPProgress() {
-
-      const modulesContainer =
-        document.getElementById("modules");
-
-      try {
-
-        const response =
-          await fetch(
-            "/.netlify/functions/erp-progress",
-            {
-              method: "GET",
-              headers: {
-                "Accept": "application/json"
-              }
-            }
-          );
+    const PROGRESS_ENDPOINT =
+      "/.netlify/functions/erp-progress";
 
 
-        const data =
-          await response.json();
+    /*
+     * =====================================================
+     * ELEMENTS
+     * =====================================================
+     */
+
+    const loadingState =
+      document.getElementById(
+        "loadingState"
+      );
+
+    const errorState =
+      document.getElementById(
+        "errorState"
+      );
+
+    const errorMessage =
+      document.getElementById(
+        "errorMessage"
+      );
+
+    const content =
+      document.getElementById(
+        "content"
+      );
+
+    const systemName =
+      document.getElementById(
+        "systemName"
+      );
+
+    const systemStatus =
+      document.getElementById(
+        "systemStatus"
+      );
+
+    const overallFill =
+      document.getElementById(
+        "overallFill"
+      );
+
+    const overallValue =
+      document.getElementById(
+        "overallValue"
+      );
+
+    const overallLineValue =
+      document.getElementById(
+        "overallLineValue"
+      );
+
+    const progressCircle =
+      document.getElementById(
+        "progressCircle"
+      );
+
+    const modulesContainer =
+      document.getElementById(
+        "modules"
+      );
+
+    const lastUpdated =
+      document.getElementById(
+        "lastUpdated"
+      );
 
 
-        if (!response.ok) {
+    /*
+     * =====================================================
+     * STATUS CLASS
+     * =====================================================
+     */
 
-          throw new Error(
-            data.message ||
-            "Unable to load ERP progress."
-          );
+    function getStatusClass(status) {
 
-        }
+      const normalized =
+        String(
+          status || ""
+        )
+          .trim()
+          .toLowerCase();
 
-
-        /*
-         * ===============================================
-         * OVERALL PROGRESS
-         * ===============================================
-         */
-
-        const overall =
-          Number(data.overallProgress) || 0;
-
-
-        document.getElementById(
-          "overallProgress"
-        ).textContent =
-          `${overall}%`;
-
-
-        document.getElementById(
-          "overallBar"
-        ).style.width =
-          `${overall}%`;
-
-
-        /*
-         * ===============================================
-         * MODULES
-         * ===============================================
-         */
-
-        if (
-          !Array.isArray(data.modules) ||
-          data.modules.length === 0
-        ) {
-
-          modulesContainer.innerHTML =
-            `
-              <div class="loading">
-                No ERP modules are currently available.
-              </div>
-            `;
-
-          return;
-
-        }
-
-
-        modulesContainer.innerHTML =
-          data.modules
-            .map(module => {
-
-              const progress =
-                Math.min(
-                  100,
-                  Math.max(
-                    0,
-                    Number(module.progress) || 0
-                  )
-                );
-
-
-              const status =
-                String(
-                  module.status || ""
-                );
-
-
-              let statusClass =
-                "planned";
-
-
-              if (
-                status.toLowerCase()
-                  .includes("completed")
-              ) {
-
-                statusClass =
-                  "completed";
-
-              } else if (
-                status.toLowerCase()
-                  .includes("development")
-              ) {
-
-                statusClass =
-                  "development";
-
-              } else if (
-                status.toLowerCase()
-                  .includes("foundation")
-              ) {
-
-                statusClass =
-                  "foundation";
-
-              }
-
-
-              return `
-                <article class="module">
-
-                  <div class="module-top">
-
-                    <div class="module-name">
-                      ${escapeHTML(
-                        module.name || "Unnamed Module"
-                      )}
-                    </div>
-
-                    <div
-                      class="status ${statusClass}"
-                    >
-                      ${escapeHTML(status)}
-                    </div>
-
-                  </div>
-
-                  <div class="module-progress">
-
-                    <span>
-                      Progress
-                    </span>
-
-                    <strong>
-                      ${progress}%
-                    </strong>
-
-                  </div>
-
-                  <div class="module-track">
-
-                    <div
-                      class="module-bar"
-                      style="width:${progress}%"
-                    ></div>
-
-                  </div>
-
-                </article>
-              `;
-
-            })
-            .join("");
-
-
-      } catch (error) {
-
-        console.error(
-          "ERP progress error:",
-          error
-        );
-
-
-        modulesContainer.innerHTML =
-          `
-            <div class="error">
-              Unable to load DAWN ERP progress.
-            </div>
-          `;
-
+      if (
+        normalized === "completed"
+      ) {
+        return "status-completed";
       }
+
+      if (
+        normalized === "in development"
+      ) {
+        return "status-development";
+      }
+
+      if (
+        normalized === "foundation"
+      ) {
+        return "status-foundation";
+      }
+
+      return "status-planned";
+    }
+
+
+    /*
+     * =====================================================
+     * ESCAPE HTML
+     * =====================================================
+     */
+
+    function escapeHtml(value) {
+
+      return String(
+        value ?? ""
+      )
+        .replace(
+          /&/g,
+          "&amp;"
+        )
+        .replace(
+          /</g,
+          "&lt;"
+        )
+        .replace(
+          />/g,
+          "&gt;"
+        )
+        .replace(
+          /"/g,
+          "&quot;"
+        )
+        .replace(
+          /'/g,
+          "&#039;"
+        );
 
     }
 
 
     /*
      * =====================================================
-     * BASIC HTML ESCAPING
+     * RENDER MODULE
      * =====================================================
-     *
-     * Keeps data received from the API from being
-     * interpreted as HTML.
-     *
      */
 
-    function escapeHTML(value) {
+    function renderModule(module) {
 
-      return String(value)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
+      const name =
+        escapeHtml(
+          module.name
+        );
+
+      const status =
+        escapeHtml(
+          module.status
+        );
+
+      const progress =
+        Math.min(
+          Math.max(
+            Number(
+              module.progress
+            ) || 0,
+            0
+          ),
+          100
+        );
+
+      const statusClass =
+        getStatusClass(
+          module.status
+        );
+
+      const card =
+        document.createElement(
+          "article"
+        );
+
+      card.className =
+        "module";
+
+      card.innerHTML = `
+        <div class="module-top">
+
+          <h3 class="module-name">
+            ${name}
+          </h3>
+
+          <div class="module-percent">
+            ${progress}%
+          </div>
+
+        </div>
+
+        <div class="module-status-row">
+
+          <div class="module-progress">
+
+            <div class="module-progress-track">
+
+              <div
+                class="module-progress-fill"
+                style="width:${progress}%"
+              ></div>
+
+            </div>
+
+          </div>
+
+          <div
+            class="module-status ${statusClass}"
+          >
+            ${status}
+          </div>
+
+        </div>
+      `;
+
+      return card;
+    }
+
+
+    /*
+     * =====================================================
+     * RENDER DATA
+     * =====================================================
+     */
+
+    function renderProgress(data) {
+
+      const overall =
+        Math.min(
+          Math.max(
+            Number(
+              data.overallProgress
+            ) || 0,
+            0
+          ),
+          100
+        );
+
+      systemName.textContent =
+        data.system ||
+        "DAWN ERP";
+
+      systemStatus.textContent =
+        data.status ||
+        "In Development";
+
+      overallValue.textContent =
+        `${overall}%`;
+
+      overallLineValue.textContent =
+        `${overall}%`;
+
+      overallFill.style.width =
+        `${overall}%`;
+
+
+      const degrees =
+        overall * 3.6;
+
+      progressCircle.style.background =
+        `conic-gradient(
+          var(--blue) 0deg,
+          var(--blue) ${degrees}deg,
+          #e8edf4 ${degrees}deg,
+          #e8edf4 360deg
+        )`;
+
+
+      modulesContainer.innerHTML =
+        "";
+
+
+      const modules =
+        Array.isArray(
+          data.modules
+        )
+          ? data.modules
+          : [];
+
+
+      modules.forEach(
+        module => {
+
+          modulesContainer.appendChild(
+            renderModule(
+              module
+            )
+          );
+
+        }
+      );
+
+
+      lastUpdated.textContent =
+        `Live status • Updated ${new Date().toLocaleString(
+          undefined,
+          {
+            dateStyle: "medium",
+            timeStyle: "short"
+          }
+        )}`;
+
+
+      loadingState.classList.add(
+        "hidden"
+      );
+
+      errorState.classList.add(
+        "hidden"
+      );
+
+      content.classList.remove(
+        "hidden"
+      );
+
+    }
+
+
+    /*
+     * =====================================================
+     * LOAD PROGRESS
+     * =====================================================
+     */
+
+    async function loadProgress() {
+
+      try {
+
+        const response =
+          await fetch(
+            PROGRESS_ENDPOINT,
+            {
+              method: "GET",
+
+              headers: {
+                "Accept":
+                  "application/json"
+              },
+
+              cache:
+                "no-store"
+            }
+          );
+
+
+        if (
+          !response.ok
+        ) {
+
+          throw new Error(
+            `Progress service returned HTTP ${response.status}.`
+          );
+
+        }
+
+
+        const data =
+          await response.json();
+
+
+        renderProgress(
+          data
+        );
+
+      } catch (error) {
+
+        console.error(
+          "DAWN progress error:",
+          error
+        );
+
+        loadingState.classList.add(
+          "hidden"
+        );
+
+        content.classList.add(
+          "hidden"
+        );
+
+        errorState.classList.remove(
+          "hidden"
+        );
+
+        errorMessage.textContent =
+          "The DAWN ERP progress service could not be reached. Please try again later.";
+
+      }
 
     }
 
@@ -579,7 +1702,7 @@
      * =====================================================
      */
 
-    loadERPProgress();
+    loadProgress();
 
   </script>
 
